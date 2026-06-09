@@ -3,518 +3,413 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第80回 卒業証書授与式 ダッシュボード</title>
+<title>情報・技術科（仮称）の展望｜渡邊調査官 講義まとめ</title>
+<meta name="description" content="次期学習指導要領で新設が検討されている中学校「情報・技術科（仮称）」。令和8年6月8日 教育課程部会 情報・技術WG資料をもとにした構造まとめ。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f6f3ec; --card:#ffffff; --ink:#1d2438; --ink-soft:#4a5169;
-    --crimson:#962b2b; --crimson-soft:#f4e7e4; --line:#e3ddd0; --line-soft:#efeae0;
-    --gold:#9c7b32; --accent-bg:#eef1f6; --kohaku:#c0263a;
+    --ink:#1B2A4A;
+    --ink-soft:#41506B;
+    --mute:#6A7790;
+    --line:#D7DEE8;
+    --paper:#F4F6F9;
+    --card:#FFFFFF;
+    --A:#E0625A;  /* 材料と加工 */
+    --B:#6FAE3F;  /* 生物育成 */
+    --C:#E6A229;  /* エネルギー変換 */
+    --D:#2A9FD6;  /* 情報 */
+    --A-bg:#FBEAE8; --B-bg:#EBF3E2; --C-bg:#FBF0DA; --D-bg:#E3F2FB;
+    --integrate:#3B4A66;
+    --disp:"Zen Kaku Gothic New", sans-serif;
+    --body:"BIZ UDPGothic", sans-serif;
+    --num:"Outfit", sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:840px;margin:0 auto;padding:0 16px 64px}
-  .serif{font-family:"Noto Serif JP",serif}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  .eyebrow{
+    font-family:var(--disp);font-weight:700;font-size:.78rem;letter-spacing:.14em;
+    color:var(--D);display:inline-flex;align-items:center;gap:.5em;margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--D);display:inline-block}
+  h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.5rem,4.5vw,2.1rem);line-height:1.3;letter-spacing:.01em}
+  .lede{color:var(--ink-soft);font-size:1rem;margin-top:14px;max-width:46em}
 
-  /* header */
-  header{background:var(--ink);color:#fff;padding:26px 16px 22px;text-align:center;position:relative;overflow:hidden}
-  header::before,header::after{content:"";position:absolute;top:0;bottom:0;width:10px}
-  header::before{left:0;background:var(--crimson)}
-  header::after{right:0;background:var(--crimson)}
-  header .kai{font-size:13px;letter-spacing:.3em;color:#cdb9a0;margin-bottom:6px}
-  header h1{font-family:"Noto Serif JP",serif;font-size:25px;font-weight:700;letter-spacing:.05em}
-  header .meta{margin-top:12px;font-size:14px;color:#d9d4ca}
-  header .meta b{color:#fff;font-weight:500}
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 420px at 78% -8%, rgba(42,159,214,.16), transparent 60%),
+      radial-gradient(700px 380px at 6% 108%, rgba(224,98,90,.10), transparent 60%),
+      linear-gradient(180deg,#16223C 0%, #1B2A4A 100%);
+    color:#fff;padding:64px 0 72px;position:relative;overflow:hidden;
+  }
+  .hero .src{
+    font-family:var(--disp);font-weight:500;font-size:.74rem;letter-spacing:.08em;
+    color:#9DB6D6;border:1px solid rgba(157,182,214,.4);border-radius:999px;
+    padding:6px 14px;display:inline-block;margin-bottom:26px;
+  }
+  .hero h1{
+    font-family:var(--disp);font-weight:900;
+    font-size:clamp(1.9rem,6.4vw,3.4rem);line-height:1.22;letter-spacing:.005em;
+  }
+  .hero h1 .hl{color:#7FD0F2}
+  .hero .thesis{margin-top:22px;font-size:clamp(1rem,2.6vw,1.18rem);color:#D7E2F2;max-width:34em}
+  .transform{
+    margin-top:38px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    font-family:var(--disp);font-weight:700;
+  }
+  .pill{padding:10px 18px;border-radius:12px;font-size:clamp(.95rem,2.4vw,1.15rem);white-space:nowrap}
+  .pill.old{background:rgba(255,255,255,.10);color:#C9D5E8;border:1px solid rgba(255,255,255,.18)}
+  .pill.new{background:#7FD0F2;color:#10243A;box-shadow:0 8px 24px rgba(127,208,242,.28)}
+  .arrow{display:flex;flex-direction:column;align-items:center;color:#7FD0F2;font-size:.7rem;font-weight:500;font-family:var(--disp);letter-spacing:.1em}
+  .arrow svg{width:34px;height:18px}
+  .chips{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
+  .chip{font-family:var(--disp);font-weight:500;font-size:.76rem;letter-spacing:.06em;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#B9C8DF;
+    padding:6px 13px;border-radius:999px}
 
-  /* summary cards */
-  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
-  .scard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 10px;text-align:center}
-  .scard .lbl{font-size:11px;color:var(--ink-soft);margin-bottom:4px}
-  .scard .val{font-family:"Noto Serif JP",serif;font-size:18px;font-weight:700}
-  .scard .val small{font-size:11px;font-weight:400}
+  /* roles strip */
+  .roles{background:#10243A;padding:30px 0}
+  .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .role{border-left:3px solid var(--D);padding:4px 0 4px 14px;color:#CFE0F0}
+  .role b{display:block;font-family:var(--disp);font-weight:700;color:#fff;font-size:.96rem;margin-bottom:2px}
+  .role span{font-size:.85rem;color:#9DB6D6}
 
-  /* countdown (紅白) */
-  .cd{background:#fff;border:2px solid var(--kohaku);border-radius:14px;margin-bottom:16px;text-align:center;overflow:hidden}
-  .cd .maku{height:16px;background:repeating-linear-gradient(90deg,var(--kohaku) 0 20px,#fff 20px 40px);border-bottom:1px solid var(--kohaku)}
-  .cd .cl{font-size:11.5px;letter-spacing:.12em;color:var(--ink-soft);margin:13px 0 11px}
-  .cd .cl b{color:var(--kohaku);font-family:"Noto Serif JP",serif;font-weight:700;letter-spacing:.02em}
-  .cd .boxes{display:flex;justify-content:center;gap:8px;padding:0 10px 16px}
-  .cd .box{border:1.5px solid var(--kohaku);border-radius:10px;padding:9px 4px;min-width:60px}
-  .cd .box .num{font-family:"Noto Serif JP",serif;font-size:26px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-  .cd .box .u{font-size:10px;margin-top:5px}
-  .cd .box.r{background:var(--kohaku)} .cd .box.r .num{color:#fff} .cd .box.r .u{color:#ffd9dc}
-  .cd .box.w{background:#fff} .cd .box.w .num{color:var(--kohaku)} .cd .box.w .u{color:var(--ink-soft)}
-  .cd .done-msg{font-family:"Noto Serif JP",serif;font-size:20px;font-weight:700;color:var(--kohaku);padding:18px 10px}
+  /* ---------- generic section ---------- */
+  section{padding:64px 0}
+  section + section{border-top:1px solid var(--line)}
 
-  /* todo */
-  .todo-prog{margin-bottom:13px}
-  .todo-prog .ptxt{font-size:12.5px;color:var(--ink-soft);margin-bottom:5px;display:flex;justify-content:space-between}
-  .todo-prog .pbar{height:8px;background:var(--line);border-radius:5px;overflow:hidden}
-  .todo-prog .pfill{height:100%;background:var(--crimson);width:0;transition:width .3s}
-  .todo-add{display:flex;gap:8px;margin-bottom:13px}
-  .todo-add input{flex:1;font-family:inherit;font-size:14px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}
-  .todo-add input:focus{outline:none;border-color:var(--crimson)}
-  .todo-add button{font-family:inherit;font-size:13.5px;font-weight:700;padding:9px 16px;border:none;border-radius:9px;background:var(--crimson);color:#fff;cursor:pointer}
-  .titem{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:7px}
-  .titem .ck{flex:none;width:22px;height:22px;border:2px solid var(--line);border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:.12s}
-  .titem.tdone .ck{background:var(--crimson);border-color:var(--crimson)}
-  .titem .tx{flex:1;font-size:14px}
-  .titem.tdone .tx{text-decoration:line-through;color:var(--ink-soft)}
-  .titem .dt{font-size:11px;color:var(--gold);font-weight:700;flex:none}
-  .titem .del{flex:none;background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:17px;padding:2px 4px;line-height:1;opacity:.5}
-  .titem .del:hover{opacity:1;color:var(--crimson)}
+  /* §1 reorg */
+  .col-head{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;
+    font-size:.82rem;letter-spacing:.12em;color:var(--mute);margin:30px 0 14px}
+  .col-head .ln{flex:1;height:1px;background:var(--line)}
+  .now-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .now{border-radius:14px;padding:16px 14px;background:var(--card);border:1px solid var(--line);
+    border-top:4px solid var(--c);position:relative}
+  .now .tag{font-family:var(--num);font-weight:800;font-size:1.1rem;color:var(--c)}
+  .now .nm{font-family:var(--disp);font-weight:700;font-size:.98rem;margin-top:2px}
+  .now .sub{font-size:.78rem;color:var(--mute);margin-top:4px;line-height:1.6}
 
-  /* name finder */
-  .finder{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 18px;margin-bottom:16px}
-  .finder .ttl{font-size:14px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:4px}
-  .finder .ttl .dot{width:8px;height:8px;border-radius:50%;background:var(--crimson)}
-  .finder .sub{font-size:12px;color:var(--ink-soft);margin-bottom:12px}
-  .names{display:flex;flex-wrap:wrap;gap:7px}
-  .chip{font-size:13px;padding:6px 13px;border:1px solid var(--line);background:#fff;border-radius:999px;cursor:pointer;transition:.12s;color:var(--ink)}
-  .chip:hover{border-color:var(--crimson);color:var(--crimson)}
-  .chip.on{background:var(--crimson);border-color:var(--crimson);color:#fff;font-weight:500}
-  .chip.team{background:var(--accent-bg);border-color:#d6dbe6}
-  .chip.team.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .converge{display:flex;justify-content:center;margin:26px 0 8px;color:var(--mute);
+    font-family:var(--disp);font-weight:700;font-size:.8rem;letter-spacing:.1em;
+    flex-direction:column;align-items:center;gap:6px}
+  .converge svg{width:30px;height:30px;color:var(--ink-soft)}
 
-  #myView{margin-top:14px;display:none}
-  #myView.show{display:block}
-  .myhead{font-size:13px;color:var(--ink-soft);margin-bottom:8px}
-  .myhead b{font-family:"Noto Serif JP",serif;font-size:17px;color:var(--crimson);font-weight:700}
-  .myjob{border-left:3px solid var(--crimson);background:var(--crimson-soft);border-radius:0 8px 8px 0;padding:9px 12px;margin-bottom:8px}
-  .myjob .k{font-size:12px;color:var(--gold);font-weight:700;display:block}
-  .myjob .t{font-size:14px;font-weight:500}
-  .myjob .d{font-size:12.5px;color:var(--ink-soft)}
-  .nojob{font-size:13px;color:var(--ink-soft)}
+  .next{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .domain{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .domain-h{padding:16px 18px;color:#fff;font-family:var(--disp);font-weight:900;font-size:1.05rem;display:flex;align-items:baseline;gap:10px}
+  .domain-h .no{font-family:var(--num);font-weight:800;font-size:1.4rem;opacity:.85}
+  .domain.info .domain-h{background:linear-gradient(100deg,#2A9FD6,#1E7FB0)}
+  .domain.prod .domain-h{background:linear-gradient(100deg,#3B4A66,#2C3850)}
+  .domain-b{padding:14px 16px 18px;display:flex;flex-direction:column;gap:9px}
+  .item{display:flex;gap:11px;align-items:flex-start;padding:9px 11px;border-radius:10px;background:var(--bg2,#F7F9FC)}
+  .item .dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--D));margin-top:7px;flex-shrink:0}
+  .item .t{font-family:var(--disp);font-weight:700;font-size:.92rem;line-height:1.4}
+  .item .d{font-size:.76rem;color:var(--mute);margin-top:2px;line-height:1.55}
+  .item.integrate{background:#EEF1F6;border:1px dashed #B9C2D2}
+  .item.integrate .dot{background:var(--integrate)}
 
-  /* tabs */
-  .tabs{display:flex;gap:4px;overflow-x:auto;margin-bottom:14px;border-bottom:1px solid var(--line);scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:none;font-size:13.5px;padding:10px 14px;border:none;background:none;cursor:pointer;color:var(--ink-soft);border-bottom:2px solid transparent;white-space:nowrap;font-family:inherit}
-  .tab.on{color:var(--crimson);border-bottom-color:var(--crimson);font-weight:700}
-  .panel{display:none;animation:fade .25s ease}
-  .panel.on{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  /* §2 map */
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:22px 0 24px;font-size:.82rem;color:var(--ink-soft)}
+  .legend b{font-family:var(--disp);font-weight:700;color:var(--ink);margin-right:.3em}
+  .legend .k{display:inline-flex;align-items:center;gap:7px}
+  .legend .k i{width:18px;height:18px;border-radius:6px;display:inline-block;font-style:normal;
+    text-align:center;line-height:18px;font-size:.7rem;font-weight:800;color:#fff;font-family:var(--num)}
+  .years{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .yr{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 16px}
+  .yr-h{font-family:var(--disp);font-weight:900;font-size:1.05rem;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .yr-h .b{font-family:var(--num);font-weight:800;background:var(--ink);color:#fff;
+    width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:1rem}
+  .unit{padding:11px 0;border-top:1px solid var(--line)}
+  .unit:first-of-type{border-top:none}
+  .unit .u-nm{font-family:var(--disp);font-weight:700;font-size:.92rem;display:flex;gap:8px;align-items:center}
+  .unit .u-nm .bar{width:4px;align-self:stretch;border-radius:3px;background:var(--c)}
+  .unit .u-d{font-size:.78rem;color:var(--mute);margin-top:5px;padding-left:12px;line-height:1.6}
+  .keys{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .key{background:var(--D-bg);border-radius:12px;padding:14px 15px}
+  .key b{font-family:var(--disp);font-weight:700;color:var(--ink);font-size:.92rem;display:block;margin-bottom:3px}
+  .key span{font-size:.8rem;color:var(--ink-soft);line-height:1.6}
 
-  .sec-h{font-family:"Noto Serif JP",serif;font-size:17px;font-weight:700;margin:4px 0 12px;display:flex;align-items:center;gap:8px}
-  .sec-h::before{content:"";width:4px;height:18px;background:var(--crimson);border-radius:2px}
-  .note{font-size:12.5px;color:var(--ink-soft);background:var(--line-soft);border-radius:8px;padding:9px 12px;margin-bottom:14px}
+  /* §3 2040 */
+  .sec-dark{background:var(--ink);color:#fff}
+  .sec-dark h2{color:#fff}
+  .sec-dark .eyebrow{color:#7FD0F2}
+  .sec-dark .eyebrow::before{background:#7FD0F2}
+  .sec-dark .lede{color:#C5D2E6}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0 14px}
+  .stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 22px}
+  .stat .big{font-family:var(--num);font-weight:800;font-size:clamp(2.2rem,7vw,3.2rem);line-height:1;color:#7FD0F2}
+  .stat .big small{font-size:.42em;font-family:var(--disp);font-weight:700;color:#fff;margin-left:.2em}
+  .stat .cap{margin-top:10px;font-size:.88rem;color:#C5D2E6}
+  .warn{margin:6px 0 30px;font-size:.86rem;color:#9DB6D6;display:flex;gap:9px;align-items:flex-start}
+  .warn svg{width:18px;height:18px;flex-shrink:0;margin-top:3px;color:#E6A229}
+  .talents{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .talent{background:rgba(255,255,255,.05);border-left:3px solid #7FD0F2;border-radius:0 10px 10px 0;padding:13px 16px}
+  .talent b{font-family:var(--disp);font-weight:700;font-size:.95rem;color:#fff;display:block}
+  .talent span{font-size:.8rem;color:#9DB6D6}
+  .span-note{margin-top:20px;background:rgba(127,208,242,.1);border-radius:12px;padding:14px 16px;font-size:.86rem;color:#D7E2F2}
+  .span-note b{font-family:var(--disp);color:#7FD0F2}
 
-  /* timeline */
-  .tl{position:relative;padding-left:8px}
-  .row{display:flex;gap:12px;padding-bottom:2px}
-  .time{flex:none;width:96px;font-size:12.5px;font-weight:700;color:var(--ink);padding-top:11px;font-variant-numeric:tabular-nums}
-  .bar{flex:none;width:14px;display:flex;flex-direction:column;align-items:center}
-  .bar .pt{width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--crimson);margin-top:13px}
-  .bar .ln{flex:1;width:2px;background:var(--line)}
-  .row.key .bar .pt{background:var(--crimson)}
-  .body{flex:1;padding:9px 0 14px}
-  .body .it{font-size:14.5px;font-weight:500}
-  .row.key .body .it{color:var(--crimson);font-weight:700}
-  .body .sub{font-size:12.5px;color:var(--ink-soft)}
-  .badge{display:inline-block;font-size:11px;background:var(--accent-bg);color:var(--ink-soft);border-radius:5px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+  /* §4 pipeline */
+  .pipe{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:0;margin-top:28px}
+  .stage{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 16px}
+  .stage .lvl{font-family:var(--disp);font-weight:700;font-size:.76rem;letter-spacing:.1em;color:var(--mute)}
+  .stage .ttl{font-family:var(--disp);font-weight:900;font-size:1.1rem;margin:3px 0 10px}
+  .stage .ttl.mid{color:var(--D)}
+  .stage ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .stage li{font-size:.8rem;color:var(--ink-soft);padding-left:14px;position:relative;line-height:1.55}
+  .stage li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--line);position:absolute;left:0;top:.6em}
+  .stage.mid li::before{background:var(--D)}
+  .pjoin{display:grid;place-items:center;color:var(--D)}
+  .pjoin svg{width:26px;height:26px}
+  .pipe-foot{margin-top:18px;font-size:.84rem;color:var(--mute);text-align:center}
 
-  /* program */
-  .prog{counter-reset:p}
-  .pstep{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:8px;align-items:baseline}
-  .pstep .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif JP",serif}
-  .pstep .pt2{font-size:14.5px;font-weight:500}
-  .pstep .pd{font-size:12.5px;color:var(--ink-soft);margin-top:1px}
-  .pstep.pre{background:var(--line-soft);border-style:dashed}
-  .pstep.pre .n{background:#fff;border:1.5px solid var(--ink-soft);color:var(--ink-soft);font-size:14px}
-  .pstep.song{border-color:var(--crimson);background:var(--crimson-soft)}
+  /* footer */
+  footer{background:#10243A;color:#9DB6D6;padding:42px 0 48px}
+  footer .ft-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+  footer .src-list{font-size:.8rem;line-height:1.9;max-width:32em}
+  footer .src-list b{font-family:var(--disp);color:#D7E2F2;font-weight:700;display:block;margin-bottom:4px}
+  footer .brand{font-family:var(--disp);text-align:right}
+  footer .brand .nm{color:#7FD0F2;font-weight:900;font-size:1.15rem}
+  footer .brand .sub{font-size:.78rem;color:#9DB6D6;margin-top:4px}
+  footer .disc{margin-top:20px;font-size:.74rem;color:#6E83A6;border-top:1px solid rgba(157,182,214,.2);padding-top:16px}
 
-  /* roles */
-  .grp{margin-bottom:6px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
-  .grp summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:9px;background:#fff}
-  .grp summary::-webkit-details-marker{display:none}
-  .grp summary .tag{font-family:"Noto Serif JP",serif;color:#fff;background:var(--crimson);font-size:12px;padding:2px 9px;border-radius:6px}
-  .grp summary .ar{margin-left:auto;color:var(--ink-soft);font-size:12px;transition:.2s}
-  .grp[open] summary .ar{transform:rotate(180deg)}
-  .ritem{padding:10px 14px;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
-  .ritem .rk{font-size:13.5px;font-weight:500;flex:none;min-width:120px}
-  .ritem .who{font-size:12px}
-  .ritem .who span{display:inline-block;background:var(--accent-bg);color:var(--ink);border-radius:5px;padding:1px 8px;margin-right:4px}
-  .ritem .who span.team{background:#e6e1d4;color:#5e5436}
-  .ritem .rd{font-size:12.5px;color:var(--ink-soft);width:100%}
-  .ritem.hit{background:var(--crimson-soft)}
-  .ritem.hit .who span.me{background:var(--crimson);color:#fff;font-weight:500}
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+  .rv.in{opacity:1;transform:none}
 
-  /* prep */
-  .prep{display:flex;flex-direction:column;gap:7px}
-  .pp{display:flex;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 13px}
-  .pp .dt{flex:none;width:62px;text-align:center}
-  .pp .dt .md{font-family:"Noto Serif JP",serif;font-size:16px;font-weight:700;line-height:1.1}
-  .pp .dt .dw{font-size:11px;color:var(--ink-soft)}
-  .pp .pc .ev{font-size:14px;font-weight:500}
-  .pp .pc .tk{font-size:12.5px;color:var(--ink-soft)}
-  .pp.big{border-color:var(--crimson);background:var(--crimson-soft)}
-  .pp.big .dt .md{color:var(--crimson)}
-
-  footer{text-align:center;font-size:11.5px;color:var(--ink-soft);margin-top:28px;padding-top:16px;border-top:1px solid var(--line)}
-  @media(max-width:560px){
-    .summary{grid-template-columns:repeat(2,1fr)}
-    .time{width:78px;font-size:12px}
-    header h1{font-size:21px}
-    .ritem .rk{min-width:100%}
+  /* responsive */
+  @media (max-width:780px){
+    .roles-grid{grid-template-columns:1fr}
+    .now-grid{grid-template-columns:1fr 1fr}
+    .next{grid-template-columns:1fr}
+    .years{grid-template-columns:1fr}
+    .keys{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+    .talents{grid-template-columns:1fr}
+    .pipe{grid-template-columns:1fr;gap:0}
+    .pjoin{padding:8px 0}
+    .pjoin svg{transform:rotate(90deg)}
+    section{padding:52px 0}
+    .hero{padding:48px 0 56px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
   }
 </style>
 </head>
 <body>
-<header>
-  <div class="kai">登別市立登別中学校</div>
-  <h1>第80回 卒業証書授与式</h1>
-  <div class="meta"><b>令和9年3月11日(木) 10:00〜11:10</b>　/　会場：体育館</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="src">令和8年6月8日 ／ 教育課程部会 情報・技術WG 資料より</span>
+    <h1>技術科が、これからの学校で<br><span class="hl">AI・メディアリテラシー</span>の<br>中核を担う教科になる。</h1>
+    <p class="thesis">次期学習指導要領の議論が進行中です。中学校の「技術・家庭（技術分野）」は家庭分野と分離し、「情報・技術科（仮称）」として独立する方向で検討されています。</p>
+    <div class="transform">
+      <span class="pill old">技術・家庭科（技術分野）</span>
+      <span class="arrow">
+        <svg viewBox="0 0 34 18" fill="none"><path d="M2 9h28m0 0l-7-6m7 6l-7 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        分離・新設
+      </span>
+      <span class="pill new">情報・技術科（仮称）</span>
+    </div>
+    <div class="chips">
+      <span class="chip">2030年頃の実施を想定</span>
+      <span class="chip">名称・内容はすべて仮称／検討中</span>
+      <span class="chip">小学校・高校もあわせて再編</span>
+    </div>
+  </div>
 </header>
 
-<div class="wrap">
-
-  <div class="summary">
-    <div class="scard"><div class="lbl">卒業生</div><div class="val">15<small>名</small></div></div>
-    <div class="scard"><div class="lbl">式の時間</div><div class="val">62<small>分</small></div></div>
-    <div class="scard"><div class="lbl">式次第</div><div class="val">16<small>項目</small></div></div>
-    <div class="scard"><div class="lbl">係分担</div><div class="val">9<small>係</small></div></div>
+<!-- ROLES -->
+<div class="roles">
+  <div class="wrap roles-grid">
+    <div class="role"><b>技術教育の担い手</b><span>義務教育段階の「技術教育」を担う教科</span></div>
+    <div class="role"><b>情報活用能力の中核</b><span>教育課程で情報活用能力を育成する中核教科</span></div>
+    <div class="role"><b>AI・メディアの中核</b><span>AI等の先端技術とメディアリテラシーの中核</span></div>
   </div>
-
-  <!-- COUNTDOWN -->
-  <div class="cd" id="cd">
-    <div class="maku"></div>
-    <div class="cl">卒業式まで　<b>令和9年3月11日(木) 10:00</b></div>
-    <div class="boxes" id="cdBoxes">
-      <div class="box r"><div class="num" id="cd-d">--</div><div class="u">日</div></div>
-      <div class="box w"><div class="num" id="cd-h">--</div><div class="u">時間</div></div>
-      <div class="box r"><div class="num" id="cd-m">--</div><div class="u">分</div></div>
-      <div class="box w"><div class="num" id="cd-s">--</div><div class="u">秒</div></div>
-    </div>
-  </div>
-
-  <!-- NAME FINDER -->
-  <div class="finder">
-    <div class="ttl"><span class="dot"></span>あなたの担当をさがす</div>
-    <div class="sub">名前をタップすると、自分の役割だけが下に表示され、係分担表でも色がつきます。</div>
-    <div class="names" id="names"></div>
-    <div id="myView">
-      <div class="myhead"><b id="myName"></b> さんの担当</div>
-      <div id="myJobs"></div>
-    </div>
-  </div>
-
-  <!-- TABS -->
-  <div class="tabs" id="tabs">
-    <button class="tab on" data-p="flow">当日の流れ</button>
-    <button class="tab" data-p="prog">式次第</button>
-    <button class="tab" data-p="role">係分担</button>
-    <button class="tab" data-p="prep">準備日程</button>
-    <button class="tab" data-p="todo">やることリスト</button>
-  </div>
-
-  <!-- FLOW -->
-  <div class="panel on" id="p-flow">
-    <div class="sec-h">当日のタイムライン</div>
-    <div class="note">※ 11:40までには3年生の学活を終了。赤い丸が式本番です。</div>
-    <div class="tl" id="tl"></div>
-  </div>
-
-  <!-- PROGRAM -->
-  <div class="panel" id="p-prog">
-    <div class="sec-h">式次第（10:00〜11:02）</div>
-    <div class="note">在校生・保護者・来賓入場（BGM）のあと、卒業生が入場して開式します。</div>
-    <div class="prog" id="prog"></div>
-  </div>
-
-  <!-- ROLES -->
-  <div class="panel" id="p-role">
-    <div class="sec-h">係分担</div>
-    <div class="note">係名をタップで開閉。上で名前を選ぶと、該当する項目に色がつきます。「3年・2年・1年」は学年団です。</div>
-    <div id="roles"></div>
-  </div>
-
-  <!-- PREP -->
-  <div class="panel" id="p-prep">
-    <div class="sec-h">準備日程</div>
-    <div class="note">卒業式練習前の時間は準備に使用。3/8以降は体育館ステージ側は式練・合唱練のみ使用可。</div>
-    <div class="prep" id="prep"></div>
-  </div>
-
-  <!-- TODO -->
-  <div class="panel" id="p-todo">
-    <div class="sec-h">やることリスト</div>
-    <div class="note">チェックは「この端末」に保存されます（先生どうしでの共有はされません）。準備日程の項目を初期登録済み。自由に追加・削除できます。</div>
-    <div class="todo-prog">
-      <div class="ptxt"><span>準備の進み具合</span><span id="todoCount">0/0 完了</span></div>
-      <div class="pbar"><div class="pfill" id="todoFill"></div></div>
-    </div>
-    <div class="todo-add">
-      <input id="todoInput" type="text" placeholder="やることを追加…">
-      <button id="todoAdd">追加</button>
-    </div>
-    <div id="todoList"></div>
-  </div>
-
-  <footer>第80回卒業証書授与式 実施要項より作成 ／ 令和9年2月17日 教務部教務係</footer>
 </div>
 
+<!-- §1 再編構造 -->
+<section>
+  <div class="wrap rv">
+    <span class="eyebrow">何が、どう変わるのか</span>
+    <h2>4つの内容が、2つの領域へ再編される</h2>
+    <p class="lede">これまでの A〜D の4内容は、「情報技術」と「情報を基盤とした生産技術」の2領域に組み直されます。色をたどると、いまの内容が次期のどこへ受け継がれるかが見えてきます。</p>
+
+    <div class="col-head">現行の学習指導要領<span class="ln"></span></div>
+    <div class="now-grid">
+      <div class="now" style="--c:var(--A)"><div class="tag">A</div><div class="nm">材料と加工</div><div class="sub">製造等に関わる</div></div>
+      <div class="now" style="--c:var(--B)"><div class="tag">B</div><div class="nm">生物育成</div><div class="sub">食料生産等に関わる</div></div>
+      <div class="now" style="--c:var(--C)"><div class="tag">C</div><div class="nm">エネルギー変換</div><div class="sub">生産・伝達・利用に関わる</div></div>
+      <div class="now" style="--c:var(--D)"><div class="tag">D</div><div class="nm">情報</div><div class="sub">サイバー空間・デジタル基盤</div></div>
+    </div>
+
+    <div class="converge">
+      <svg viewBox="0 0 30 30" fill="none"><path d="M7 6l8 9 8-9M7 16l8 9 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      再編
+    </div>
+
+    <div class="next">
+      <div class="domain info">
+        <div class="domain-h"><span class="no">1</span>情報技術</div>
+        <div class="domain-b">
+          <div class="item" style="--c:var(--D);--bg2:var(--D-bg)"><span class="dot"></span><div><div class="t">(1) 情報の表現とデジタル化</div><div class="d">情報やデータを正しく読み取り、妥当性を確かめ、分かりやすく伝える</div></div></div>
+          <div class="item" style="--c:var(--D);--bg2:var(--D-bg)"><span class="dot"></span><div><div class="t">(2) プログラミングと自動化</div><div class="d">命令をプログラムし、作業や判断の一部を任せて精度と効率を高める</div></div></div>
+          <div class="item" style="--c:var(--D);--bg2:var(--D-bg)"><span class="dot"></span><div><div class="t">(3) 情報基盤とシステム化</div><div class="d">複数の技術を組み合わせたシステムを、社会への影響に配慮して評価・改善する</div></div></div>
+        </div>
+      </div>
+      <div class="domain prod">
+        <div class="domain-h"><span class="no">2</span>情報を基盤とした生産技術</div>
+        <div class="domain-b">
+          <div class="item" style="--c:var(--A);--bg2:var(--A-bg)"><span class="dot"></span><div><div class="t">(1) 材料加工とデジタル製作</div><div class="d">デジタルも活用して材料や構造を工夫し、ものをつくる</div></div></div>
+          <div class="item" style="--c:var(--B);--bg2:var(--B-bg)"><span class="dot"></span><div><div class="t">(2) 生物育成とデータ活用</div><div class="d">デジタルも活用して育成環境を調整し、食料供給や環境保全につなげる</div></div></div>
+          <div class="item" style="--c:var(--C);--bg2:var(--C-bg)"><span class="dot"></span><div><div class="t">(3) エネルギー変換とスマート化</div><div class="d">デジタルも活用してエネルギーの利用を効率化する</div></div></div>
+          <div class="item integrate"><span class="dot"></span><div><div class="t">(4) 技術の統合</div><div class="d">複数の技術を統合し、未知の課題を解決する力を確かなものにする</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §2 学習マップ -->
+<section>
+  <div class="wrap rv">
+    <span class="eyebrow">授業は、どうなるのか</span>
+    <h2>3年間で積み上げる学びの地図</h2>
+    <p class="lede">ものづくりにも、植物の育成にも、エネルギーにも——プログラミングが全領域の基盤に入り込みます。各内容は3つの観点で組み立てられ、学年が上がるほど統合的になります。</p>
+
+    <div class="legend">
+      <span class="k"><b>3つの観点</b></span>
+      <span class="k"><i style="background:var(--D)">①</i>情報技術の活用</span>
+      <span class="k"><i style="background:var(--B)">②</i>適切な取扱い</span>
+      <span class="k"><i style="background:var(--C)">③</i>特性の理解</span>
+    </div>
+
+    <div class="years">
+      <div class="yr">
+        <div class="yr-h"><span class="b">1</span>第1学年</div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--D)"></span>❶ 情報の表現とデジタル化</div><div class="u-d">データの集め方、デジタル化の仕組み、生成AIのリスク、情報デザイン</div></div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--A)"></span>❷ 材料加工とデジタル製作</div><div class="u-d">3DCADで設計し、加工機も使って製作。AIを使った製造工程にも触れる</div></div>
+      </div>
+      <div class="yr">
+        <div class="yr-h"><span class="b">2</span>第2学年</div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--D)"></span>❶ プログラミングと自動化</div><div class="u-d">計測・制御、アルゴリズム、AIによる画像認識との比較</div></div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--B)"></span>❷ 生物育成とデータ活用</div><div class="u-d">データをもとに育成計画、灌水や環境をプログラムで調整</div></div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--C)"></span>❸ エネルギー変換とスマート化</div><div class="u-d">回路や機構を設計・製作、情報技術と連携して効率化</div></div>
+      </div>
+      <div class="yr">
+        <div class="yr-h"><span class="b">3</span>第3学年</div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--D)"></span>❶ 情報基盤とシステム化</div><div class="u-d">外部サービス（API）連携、IoTシステムづくり、情報の批判的吟味</div></div>
+        <div class="unit"><div class="u-nm"><span class="bar" style="--c:var(--integrate)"></span>❷ 技術の統合</div><div class="u-d">学んだ技術を組み合わせ、防災・生活課題を解決するプロジェクト</div></div>
+      </div>
+    </div>
+
+    <div class="keys">
+      <div class="key"><b>プログラミングが基盤に</b><span>特定の領域だけでなく、生物育成やエネルギーにも入り込む</span></div>
+      <div class="key"><b>中3でAPI活用まで</b><span>外部サービス連携やIoT、技術の統合まで見据えた構想</span></div>
+      <div class="key"><b>生成AIを「補助的に活用」</b><span>調査・設計・制作の随所で、AIを使う場面が明記されている</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 2040 -->
+<section class="sec-dark">
+  <div class="wrap rv">
+    <span class="eyebrow">なぜ、ここまで本気なのか</span>
+    <h2>見据えているのは、2040年の社会</h2>
+    <p class="lede">WG資料の危機感は、かなり強いものでした。「教育政策の遅れが、新たな価値創出を阻み、我が国の経済・民主主義の基盤を揺るがす」とまで記されています。</p>
+
+    <div class="stats">
+      <div class="stat"><div class="big">1,100<small>万人</small></div><div class="cap">生産年齢人口の不足（見込み）</div></div>
+      <div class="stat"><div class="big">339<small>万人</small></div><div class="cap">AI・ロボット等の活用を担う労働者の不足</div></div>
+    </div>
+    <div class="warn">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l9 16H3l9-16zM12 10v4m0 3h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      偽・誤情報の拡散による社会の分断。フィルターバブル等による価値観の偏りが増大し、負の側面に対応する力が不十分。
+    </div>
+
+    <div class="talents">
+      <div class="talent"><b>健全な民主主義を支える主権者</b><span>情報の真偽や偏りを見極め、判断できる</span></div>
+      <div class="talent"><b>探究し学び続けるアクティブラーナー</b><span>自ら問いを立て、情報を集め分析し続ける</span></div>
+      <div class="talent"><b>アドバンスト・エッセンシャルワーカー</b><span>AI・DXを駆使し現場で協働的に課題解決する</span></div>
+      <div class="talent"><b>世界トップレベルのイノベーター</b><span>多様な情報を統合し新たな価値を創造する</span></div>
+    </div>
+
+    <div class="span-note"><b>広い裾野</b>（情報技術の賢い使い手）と <b>高い頂</b>（イノベーションの創り手）、その両方を育てる方向で改善が図られます。</div>
+  </div>
+</section>
+
+<!-- §4 小中高 -->
+<section>
+  <div class="wrap rv">
+    <span class="eyebrow">一気通貫で、つながる</span>
+    <h2>小・中・高をつらぬく一本の線</h2>
+    <p class="lede">情報・技術科（仮称）は、単体で生まれるわけではありません。小学校から高校まで、情報活用能力を体系的・系統的に育てる設計の中核に置かれています。</p>
+
+    <div class="pipe">
+      <div class="stage">
+        <div class="lvl">小学校</div>
+        <div class="ttl">情報の領域（仮称）</div>
+        <ul><li>総合的な学習の時間に付加</li><li>体験的な活動で一体的に育成</li><li>プログラミングを体験する</li></ul>
+      </div>
+      <div class="pjoin"><svg viewBox="0 0 26 26" fill="none"><path d="M4 13h16m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="stage mid">
+        <div class="lvl">中学校</div>
+        <div class="ttl mid">情報・技術科（仮称）</div>
+        <ul><li>情報技術 ＋ 生産技術の2領域</li><li>特性の理解を専門的・体系的に</li><li>技術の統合で課題解決</li></ul>
+      </div>
+      <div class="pjoin"><svg viewBox="0 0 26 26" fill="none"><path d="M4 13h16m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="stage">
+        <div class="lvl">高等学校</div>
+        <div class="ttl">情報科（情報Ⅰ）</div>
+        <ul><li>情報デザインとデザイン思考</li><li>データ分析・モデル化</li><li>PBLによる課題解決の実践</li></ul>
+      </div>
+    </div>
+    <p class="pipe-foot">3つの観点（活用／適切な取扱い／特性の理解）が、小中高を通じて学習を支える基盤として位置づけられます。</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="src-list">
+        <b>出典</b>
+        ・中央教育審議会 教育課程企画特別部会「論点整理」（令和7年9月25日）<br>
+        ・教育課程部会 情報・技術ワーキンググループ 資料1（令和8年6月8日）<br>
+        ・文部科学省 中学校技術・家庭科（技術分野）事例集
+      </div>
+      <div class="brand">
+        <div class="nm">AIの回し者</div>
+        <div class="sub">資料まとめ ／ 三浦</div>
+      </div>
+    </div>
+    <p class="disc">本ページは渡邊茂一 教科調査官の講義資料をもとにした内容整理です。名称・内容構成・時数等はすべて検討中（仮称）であり、今後変更される可能性があります。最新情報は文部科学省の公表資料をご確認ください。</p>
+  </div>
+</footer>
+
 <script>
-/* ---------- data ---------- */
-const timeline=[
-  ["8:15-8:30","職員打ち合わせ","",0],
-  ["8:30-","係生徒登校","受付準備等",0],
-  ["8:50-9:00","在校生登校","教室待機",0],
-  ["9:00-9:20","在校生 朝の会 / 卒業生登校","頭髪・服装等チェック",0],
-  ["9:25-9:40","在校生 合唱練習(体育館) / 卒業生 朝の会","整列指導・礼法確認",0],
-  ["9:40-9:45","休憩","トイレ等",0],
-  ["-9:45","保護者受付 終了","遅れた保護者は職員玄関",0],
-  ["9:50-9:55","保護者・来賓 入場","",0],
-  ["9:55-9:57","卒業生 入場準備","入口整列",0],
-  ["10:00-11:02","卒業式","式次第タブ参照",1],
-  ["11:02-11:10","全員退場","教室へ",0],
-  ["11:10-11:40","各学年 学活","",0],
-  ["11:40-","在校生 見送り準備","生徒会の指示・整列",0],
-  ["11:50-","卒業生 見送り","",1],
-  ["-12:20","完全下校","",0],
-  ["12:20-","職員打ち合わせ","",0],
-];
-const program=[
-  ["pre","","在校生・保護者・来賓 入場","BGM"],
-  ["",1,"卒業生入場","担任先頭・番号順／間に合えば吹奏楽録音"],
-  ["",2,"修礼","ピアノ：前田涼月"],
-  ["",3,"開式の辞",""],
-  ["",4,"国歌斉唱","CD再生"],
-  ["",5,"校歌斉唱","ピアノ伴奏：前田涼月"],
-  ["",6,"学事報告",""],
-  ["",7,"卒業証書授与","ホルダーごと渡す"],
-  ["",8,"学校長式辞","在校生・卒業生とも座礼"],
-  ["",9,"祝辞","PTA会長 勝間広靖 様／座礼"],
-  ["",10,"祝詞・祝電披露","BGM(オルゴール)"],
-  ["",11,"在校生送辞","在校生代表 菜花舜"],
-  ["",12,"卒業生答辞","卒業生代表 橋場紗希"],
-  ["song",13,"全校合唱「旅立ちの日に」","指揮：白田颯斗／伴奏：宮下蒼生"],
-  ["",14,"閉式の辞",""],
-  ["",15,"修礼","ピアノ：前田涼月"],
-  ["",16,"退場","BGM／在校生は拍手"],
-];
-const teams=["3年","2年","1年"];
-const roles=[
-  ["総務",[
-    ["総括",["教頭","三浦"],"日程調整、各係調整"],
-    ["案内状",["教頭"],"来賓・保護者案内状、祝辞依頼"],
-    ["学事報告",["教頭"],"原稿作成・印刷・綴じ込み(1年)"],
-    ["ステージ花",["教頭"],"生花注文"],
-    ["祝文・祝電",["大岩","奈良"],"受付・原稿準備・掲示・披露"],
-  ]],
-  ["庶務",[
-    ["証書台帳",["3年"],"卒業証書台帳記入"],
-    ["卒業証書",["校長","3年"],"証書への記入・押印・台帳照合"],
-    ["記念品",["教頭","3年"],"胸花・記念品の準備(教室配布)"],
-  ]],
-  ["進行",[
-    ["司会進行",["三浦"],"総練習・卒業式の司会、礼法指導(全体)"],
-    ["合図・暖房",["松本","福山"],"整列・入場合図、ドア管理、暖房"],
-    ["卒業生入場案内",["八柳"],"卒業生入場案内"],
-    ["証書管理",["渡會","金丸"],"証書管理、授与時の介添え(金丸)"],
-    ["合唱指導",["三浦"],"全校合唱の指導、進行要項作成"],
-    ["伴奏",["前田"],"修礼・校歌の伴奏"],
-    ["放送・BGM",["八柳","三浦"],"放送機器・BGM準備"],
-    ["ビデオ・写真",["福山","松本"],"授与時のビデオ、式中の写真記録"],
-  ]],
-  ["会場",[
-    ["体育館会場準備",["2年","三浦"],"会場準備計画、全体配置計画"],
-    ["ステージ",["2年","公務補"],"国旗・市旗・校旗・演台・横看板・生花の設置"],
-    ["紅白幕",["2年"],"紅白幕設置"],
-    ["長机・椅子",["2年"],"長机・椅子・白布"],
-    ["合唱台・ピアノ",["1年","2年"],"合唱台・ピアノの設置"],
-    ["保護者席",["2年"],"保護者席の設置(120)"],
-    ["ビデオ設置",["2年","福山"],"ビデオ・プロジェクタ・スクリーン設置"],
-    ["看板・案内表示",["1年","公務補"],"玄関前看板、案内掲示物"],
-    ["廊下・教室準備",["1年"],"廊下・玄関・3年教室装飾"],
-    ["保護者控え室",["3年"],"控室の設置(会議室)"],
-    ["受付",["奈良"],"受付設置、しおり配布、控え室案内"],
-    ["靴置き場",["公務補"],"靴置き場・スリッパ準備"],
-  ]],
-  ["指導",[
-    ["送辞・答辞",["金丸","三浦"],"送辞・答辞作成指導、礼法指導"],
-    ["生徒指導",["福山"],"身だしなみ・規律指導"],
-    ["見送り",["金丸"],"見送り計画、移動指示"],
-  ]],
-  ["案内",[
-    ["来賓・保護者案内",["校長","教頭"],"入場案内(来賓:校長 保護者:教頭)"],
-  ]],
-  ["接待",[
-    ["来賓接待",["大岩"],"湯茶準備"],
-  ]],
-  ["美化",[
-    ["美化・清掃",["奈良"],"校舎内環境整備、清掃計画、朝の清掃"],
-  ]],
-  ["校舎",[
-    ["駐車場",["公務補"],"除雪、駐車場案内表示"],
-  ]],
-];
-const prep=[
-  ["2/11","木","案内状送付","教頭",0],
-  ["2/17","水","2月職員会議：進行表提案・各係提案／記念品準備完了","三浦・各係・教頭・3年",0],
-  ["3/2","火","卒業台帳完成","3年",0],
-  ["3/3","水","公立学力検査日","",0],
-  ["3/4","木","公立面接日／生花注文","教頭",0],
-  ["3/5","金","卒業生練習①・在校生練習①・全校合唱練習","三浦・各学年団",0],
-  ["3/8","月","同窓会入会式・卒業生練習②③・証書/学事報告完成","三浦・各学年団",0],
-  ["3/9","火","3年生を送る会・奉仕活動・卒業生練習④・在校生練習②","三浦・各学年団",0],
-  ["3/10","水","総練習・会場準備","三浦・各学年団・各係",0],
-  ["3/11","木","第80回 卒業証書授与式","",1],
-  ["3/12","金","後片付け","各係・教頭",0],
-];
-
-/* ---------- render ---------- */
-const $=s=>document.querySelector(s);
-
-/* timeline */
-$("#tl").innerHTML=timeline.map((r,i)=>{
-  const last=i===timeline.length-1;
-  return `<div class="row ${r[3]?'key':''}">
-    <div class="time">${r[0]}</div>
-    <div class="bar"><div class="pt"></div>${last?'':'<div class="ln"></div>'}</div>
-    <div class="body"><div class="it">${r[1]}</div>${r[2]?`<div class="sub">${r[2]}</div>`:''}</div>
-  </div>`;
-}).join("");
-
-/* program */
-$("#prog").innerHTML=program.map(p=>{
-  const cls=p[0]?` ${p[0]}`:"";
-  const num=p[1]?p[1]:"◯";
-  return `<div class="pstep${cls}"><div class="n">${num}</div><div><div class="pt2">${p[2]}</div>${p[3]?`<div class="pd">${p[3]}</div>`:''}</div></div>`;
-}).join("");
-
-/* roles */
-const roleHtml=roles.map((g,gi)=>{
-  const items=g[1].map(it=>{
-    const who=it[1].map(w=>`<span class="${teams.includes(w)?'team':''}" data-who="${w}">${w}</span>`).join("");
-    return `<div class="ritem" data-people="${it[1].join(',')}">
-      <div class="rk">${it[0]}</div><div class="who">${who}</div><div class="rd">${it[2]}</div></div>`;
-  }).join("");
-  return `<details class="grp" ${gi<3?'open':''}>
-    <summary><span class="tag">${g[0]}</span>${g[1].length}項目<span class="ar">▼</span></summary>
-    ${items}</details>`;
-}).join("");
-$("#roles").innerHTML=roleHtml;
-
-/* prep */
-$("#prep").innerHTML=prep.map(p=>`
-  <div class="pp ${p[4]?'big':''}">
-    <div class="dt"><div class="md">${p[0]}</div><div class="dw">(${p[1]})</div></div>
-    <div class="pc"><div class="ev">${p[2]}</div>${p[3]?`<div class="tk">担当：${p[3]}</div>`:''}</div>
-  </div>`).join("");
-
-/* name chips */
-const people=["校長","教頭","三浦","大岩","奈良","松本","福山","八柳","渡會","金丸","前田","公務補"];
-const allChips=[...people,...teams];
-$("#names").innerHTML=allChips.map(n=>{
-  const isTeam=teams.includes(n);
-  return `<button class="chip ${isTeam?'team':''}" data-name="${n}">${n}${isTeam?'団':''}</button>`;
-}).join("");
-
-let current=null;
-function selectName(n){
-  const chips=document.querySelectorAll(".chip");
-  document.querySelectorAll(".ritem").forEach(r=>{r.classList.remove("hit");r.querySelectorAll(".who span").forEach(s=>s.classList.remove("me"));});
-  if(current===n){ // toggle off
-    current=null;chips.forEach(c=>c.classList.remove("on"));
-    $("#myView").classList.remove("show");return;
-  }
-  current=n;
-  chips.forEach(c=>c.classList.toggle("on",c.dataset.name===n));
-  // collect jobs
-  const jobs=[];
-  roles.forEach(g=>g[1].forEach(it=>{ if(it[1].includes(n)) jobs.push([g[0],it[0],it[2]]); }));
-  $("#myName").textContent=n+(teams.includes(n)?"団":"");
-  $("#myJobs").innerHTML=jobs.length?jobs.map(j=>
-    `<div class="myjob"><span class="k">${j[0]}</span><span class="t">${j[1]}</span><div class="d">${j[2]}</div></div>`
-  ).join(""):`<div class="nojob">この名前に直接ひもづく係はありません。</div>`;
-  $("#myView").classList.add("show");
-  // highlight in role table + open groups
-  document.querySelectorAll(".ritem").forEach(r=>{
-    if(r.dataset.people.split(",").includes(n)){
-      r.classList.add("hit");
-      r.querySelectorAll(".who span").forEach(s=>{ if(s.dataset.who===n) s.classList.add("me"); });
-      r.closest("details").open=true;
-    }
-  });
-}
-document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>selectName(c.dataset.name)));
-
-/* tabs */
-document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
-  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("on"));
-  t.classList.add("on");
-  $("#p-"+t.dataset.p).classList.add("on");
-}));
-
-/* countdown */
-const cdTarget=new Date("2027-03-11T10:00:00+09:00").getTime();
-let cdTimer;
-function tickCD(){
-  const diff=cdTarget-Date.now();
-  if(diff<=0){
-    const cd=$("#cd");cd.classList.add("done");
-    cd.innerHTML='<div class="maku"></div><div class="done-msg">🌸 ご卒業おめでとうございます 🌸</div>';
-    if(cdTimer)clearInterval(cdTimer);return;
-  }
-  const d=Math.floor(diff/864e5);
-  const h=Math.floor(diff%864e5/36e5);
-  const m=Math.floor(diff%36e5/6e4);
-  const s=Math.floor(diff%6e4/1e3);
-  $("#cd-d").textContent=d;
-  $("#cd-h").textContent=String(h).padStart(2,"0");
-  $("#cd-m").textContent=String(m).padStart(2,"0");
-  $("#cd-s").textContent=String(s).padStart(2,"0");
-}
-tickCD();
-cdTimer=setInterval(tickCD,1000);
-
-/* ---------- todo list ---------- */
-const TODO_KEY="sotsu80_todo_v1";
-const defaultTodos=[
-  {t:"案内状送付",d:"2/11",done:false},
-  {t:"進行表・各係提案／記念品準備完了",d:"2/17",done:false},
-  {t:"卒業台帳完成",d:"3/2",done:false},
-  {t:"生花注文",d:"3/4",done:false},
-  {t:"卒業生練習①・在校生練習①・全校合唱練習",d:"3/5",done:false},
-  {t:"卒業証書完成・学事報告完成",d:"3/8",done:false},
-  {t:"3年生を送る会・卒業生練習④",d:"3/9",done:false},
-  {t:"総練習・会場準備",d:"3/10",done:false},
-  {t:"後片付け",d:"3/12",done:false},
-];
-function loadTodos(){
-  try{const raw=localStorage.getItem(TODO_KEY);if(raw)return JSON.parse(raw);}catch(e){}
-  return defaultTodos.map(x=>({...x}));
-}
-function saveTodos(){try{localStorage.setItem(TODO_KEY,JSON.stringify(todos));}catch(e){}}
-function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-let todos=loadTodos();
-function renderTodos(){
-  const done=todos.filter(t=>t.done).length,total=todos.length;
-  $("#todoCount").textContent=done+"/"+total+" 完了";
-  $("#todoFill").style.width=(total?done/total*100:0)+"%";
-  $("#todoList").innerHTML=todos.map((t,i)=>
-    '<div class="titem '+(t.done?"tdone":"")+'">'+
-      '<div class="ck" data-i="'+i+'">'+(t.done?"✓":"")+'</div>'+
-      '<div class="tx">'+esc(t.t)+'</div>'+
-      (t.d?'<div class="dt">'+esc(t.d)+'</div>':'')+
-      '<button class="del" data-i="'+i+'">×</button>'+
-    '</div>').join("");
-}
-$("#todoList").addEventListener("click",e=>{
-  const ck=e.target.closest(".ck"),del=e.target.closest(".del");
-  if(ck){const i=+ck.dataset.i;todos[i].done=!todos[i].done;saveTodos();renderTodos();}
-  else if(del){const i=+del.dataset.i;todos.splice(i,1);saveTodos();renderTodos();}
-});
-function addTodo(){
-  const el=$("#todoInput"),v=el.value.trim();if(!v)return;
-  todos.push({t:v,d:"",done:false});el.value="";saveTodos();renderTodos();
-}
-$("#todoAdd").addEventListener("click",addTodo);
-$("#todoInput").addEventListener("keydown",e=>{if(e.key==="Enter")addTodo();});
-renderTodos();
+  (function(){
+    var els = document.querySelectorAll('.rv');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  })();
 </script>
 </body>
 </html>
